@@ -1,6 +1,6 @@
-home_page/__init__.py
 beautifulsoup4
 requests
+pandas==2.2.1
 imblearn==0.0
 joblib==1.4.0
 numpy==1.23.5

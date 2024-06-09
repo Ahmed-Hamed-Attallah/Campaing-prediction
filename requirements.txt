@@ -1,4 +1,4 @@
-'/Campaign prediction/home_page.py/__init__.py'
+'/home_page.py/__init__.py'
 beautifulsoup4
 requests
 imblearn==0.0

@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import joblib as jo
 
 
-df = jo.load('Dataset.pkl')
+df = pd.read_csv('Campaign prediction/home_page.py')
 df['duration'] = df['duration'].apply(lambda x : x/60)
 def x(x):
     if x == 999 :

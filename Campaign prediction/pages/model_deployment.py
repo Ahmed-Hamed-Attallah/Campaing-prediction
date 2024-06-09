@@ -55,7 +55,7 @@ class LabelEncoderTransformer(BaseEstimator, TransformerMixin):
         return X_encoded
 
 # import
-model = joblib.load('Model.pkl')
+model = joblib.load('Campaign prediction/LR_Model.pkl')
 columns = joblib.load('columns.pkl')
 
 

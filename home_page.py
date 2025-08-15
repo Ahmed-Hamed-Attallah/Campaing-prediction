@@ -20,50 +20,7 @@ st.set_page_config(
         page_icon= '📊'
 )
 
-def AUD_to_EGP(x):
-    response = req.get("https://www.exchangerates.org.uk/Egyptian-Pound-EGP-currency-table.html")
-    soup = BeautifulSoup(response.text , "html.parser")
-    price = float(soup.find('div' , attrs={'class' : 'large-8 medium-6 small-12 columns nolpad'}).find_all('tr' ,
-                                    attrs={'class' : 'colone'})[0].find('strong').text)
-    today =f'1 AUD today = {price} EGP'
-    reslut =f'{x} AUD = {round(x*price , 2)}'
-    return today , reslut
 
-def GBP_to_EGP(x):
-    response = req.get("https://www.exchangerates.org.uk/Egyptian-Pound-EGP-currency-table.html")
-    soup = BeautifulSoup(response.text , "html.parser")
-    price = float(soup.find('div' , attrs={'class' : 'large-8 medium-6 small-12 columns nolpad'}).find_all('tr' ,
-                                    attrs={'class' : 'coltwo'})[0].find('strong').text)
-    today = f'1 GBP today = {price} EGP'
-    result = f'{x} GBP = {round(x*price , 2)}'
-    return today , result
-
-def USD_to_EGP(x):
-    response = req.get("https://www.exchangerates.org.uk/Egyptian-Pound-EGP-currency-table.html")
-    soup = BeautifulSoup(response.text , "html.parser")
-    price = float(soup.find('div' , attrs={'class' : 'large-8 medium-6 small-12 columns nolpad'}).find_all('tr' ,
-                                    attrs={'class' : 'colone'})[2].find('strong').text)
-    today = f'1 USD today = {price} EGP'
-    result = f'{x} USD = {round(x*price , 2)}'
-    return today , result
-
-def EUR_to_EGP(x):
-    response = req.get("https://www.exchangerates.org.uk/Egyptian-Pound-EGP-currency-table.html")
-    soup = BeautifulSoup(response.text , "html.parser")
-    price = float(soup.find('div' , attrs={'class' : 'large-8 medium-6 small-12 columns nolpad'}).find_all('tr' ,
-                                    attrs={'class' : 'colone'})[1].find('strong').text)
-    today = f'1 EUR today = {price} EGP'
-    result = f'{x} EUR = {round(x*price , 2)}'
-    return today , result
-
-def NZD_to_EGP(x):
-    response = req.get("https://www.exchangerates.org.uk/Egyptian-Pound-EGP-currency-table.html")
-    soup = BeautifulSoup(response.text , "html.parser")
-    price = float(soup.find('div' , attrs={'class' : 'large-8 medium-6 small-12 columns nolpad'}).find_all('tr' ,
-                                    attrs={'class' : 'coltwo'})[1].find('strong').text)
-    today = f'1 NZD today = {price} EGP'
-    result  = f'{x} NZD = {round(x*price , 2)}'
-    return today , result
 
 tab1 , tab2 = st.tabs(['sample of Dataset' , 'Currency calculator 🧮'])
 
@@ -81,23 +38,6 @@ with tab1 :
 
 with tab2 :
     st.markdown('<h3 style="text-align: center; color :#1450DB;">Currency calculator 🧮</h3>', unsafe_allow_html=True)
-
-    calc_type = st.selectbox('pleas select Currency from this box :' , ['Australian Dollars to Egyptian Pounds' ,
-                                                           'Pounds to Egyptian Pounds' , 'Euros to Egyptian Pounds' ,
-                                                           'New Zealand Dollars to Egyptian Pounds' , 'Dollars to Egyptian Pounds'])
-
-    if calc_type == 'Australian Dollars to Egyptian Pounds' :
-        aud = st.number_input('pleas enter number of Australian Dollars')
-        st.text(AUD_to_EGP(aud))
-    elif calc_type== 'Pounds to Egyptian Pounds' :
-        gbp = st.number_input('pleas enter number of Pounds')
-        st.text(GBP_to_EGP(gbp))
-    elif calc_type == 'Euros to Egyptian Pounds' :
-        eur = st.number_input('pleas enter number Euros')
-        st.text(EUR_to_EGP(eur))
-    elif calc_type == 'New Zealand Dollars to Egyptian Pounds' :
-        nzd = st.number_input('pleas enter number of New Zealand Dollars' )
-        st.text(NZD_to_EGP(nzd))
-    else :
-        usd =  st.number_input('pleas enter number of Dollars')
-        st.text(USD_to_EGP(usd))
+    st.markdown('<h5 style="text-align: center; color :#1450DB;">Under Working</h5>', unsafe_allow_html=True)
+   
+    

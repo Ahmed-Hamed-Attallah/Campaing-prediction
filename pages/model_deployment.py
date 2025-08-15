@@ -55,8 +55,8 @@ class LabelEncoderTransformer(BaseEstimator, TransformerMixin):
         return X_encoded
 
 # import
-model = joblib.load('LR_Model.pkl')
-columns = joblib.load('columns.pkl')
+model = joblib.load('pages/LR_Model.pkl')
+columns = joblib.load('pages/columns.pkl')
 
 
 # define function for age 
@@ -145,3 +145,4 @@ if st.button("Predict"):
     result = prediction(job, marital, education, housing, loan, contact,day_of_week, duration, campaign,pdays,previous,poutcom,emp,price,conf, euribor3m,employed,month,age)
     res_list = ["No,he will not subscribe","yes,he will subscribe"]
     st.write(res_list[result])
+

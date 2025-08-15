@@ -12,8 +12,31 @@ st.set_page_config(
     layout="wide",
 )
 
-# Label Encoder Loading
-LabelEncoderTransformer = joblib.load("LabelEncoderTransformer.pkl")
+# -------- Custom objects that might be needed for unpickling --------
+class LabelEncoderTransformer(BaseEstimator, TransformerMixin):
+    def __init__(self, columns):
+        self.columns = columns
+        self.map_dict = {}
+
+    def fit(self, X, y=None):
+        map_dict = {}
+        for column in self.columns:
+            map_dict[column] = {}
+            unique_values = [value for value in X[column].unique() if value != "unknown"]
+            for i, value in enumerate(unique_values):
+                map_dict[column][value] = i
+        self.map_dict = map_dict
+        return self
+
+    def transform(self, X):
+        X_encoded = X.copy()
+        for key in self.map_dict.keys():
+            if key in X_encoded.columns:
+                X_encoded[key] = X_encoded[key].map(self.map_dict[key])
+        return X_encoded
+
+
+
 # -------- Helpers --------
 @st.cache_resource(show_spinner=False)
 def load_model_and_columns():
